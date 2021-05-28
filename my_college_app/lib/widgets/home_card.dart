@@ -21,7 +21,7 @@ class HomeCard extends StatelessWidget {
         children: [
           Container(
             width: mediaQuerySize.width * 0.3,
-            height: mediaQuerySize.height * 0.3,
+            height: mediaQuerySize.height * 0.2,
             child: Padding(
               padding: EdgeInsets.symmetric(
                 vertical: padding,
@@ -62,8 +62,11 @@ class HomeCard extends StatelessWidget {
                               vertical: iconPadding,
                               horizontal: iconPadding,
                             ),
-                            child: Icon(this.icon,
-                                size: size * 0.05, color: this.color),
+                            child: Icon(
+                              this.icon,
+                              size: size * 0.04,
+                              color: this.color,
+                            ),
                           ),
                         ),
                       ),
@@ -105,7 +108,7 @@ class HomeCard extends StatelessWidget {
                   //     color: Colors.white,
                   //   ),
                   // ],
-                  fontSize: size * 0.05,
+                  fontSize: size * 0.038,
                   color: Colors.white,
                   // color: Colors.grey[600],
                 ),

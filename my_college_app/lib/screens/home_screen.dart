@@ -1,34 +1,44 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../screens/calendar_screen.dart';
-import '../screens/course_screen.dart';
-import '../screens/payment_screen.dart';
-import '../widgets/home_card.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../constants.dart';
+import '../widgets/app_drawer.dart';
+import '../widgets/home_card.dart';
+import 'calendar_screen.dart';
+import 'courses/course_screen.dart';
+import 'payment_screen.dart';
+import 'anti_ragging_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+  static const routeName = 'Home-screen';
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage('https://wallpaper.dog/large/11032781.jpg'),
-          fit: BoxFit.cover,
+        gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Theme.of(context).primaryColor,
+            Theme.of(context).accentColor,
+            // Colors.teal.withOpacity(1),
+            // Colors.pink.withOpacity(1),
+          ],
         ),
       ),
+      // decoration: BoxDecoration(
+      //     image: DecorationImage(
+      //       image: AssetImage('images/background_images/bg_blue_moon.jpg'),
+      //       // image: AssetImage('assets/images/background_images/bg_blue_moon.jpg'),
+      //       fit: BoxFit.cover,
+      //     ),
+      //     ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        drawer: AppDrawer(),
         appBar: AppBar(
-          // leading: Drawer( // commented because of the color Issue!
-          //   // for Login etc!
-
-          //   child: IconButton(
-          //     color: Colors.black,
-          //     icon: Icon(Icons.menu),
-          //     onPressed: () {},
-          //   ),
-          // ),
           backgroundColor: Colors.transparent,
           centerTitle: true,
           title: FittedBox(
@@ -37,20 +47,32 @@ class HomeScreen extends StatelessWidget {
               Constants.appBarName,
               style: TextStyle(
                 // color: Colors.white,
-                fontSize: MediaQuery.of(context).size.height * 0.05,
+                fontSize: MediaQuery.of(context).size.height * 0.038,
                 fontWeight: FontWeight.w800,
               ),
             ),
           ),
           actions: <Widget>[
             IconButton(
-                color: Colors.black,
                 icon: Icon(
-                  Icons.navigate_next,
+                  Icons.subdirectory_arrow_right_outlined,
                 ),
-                onPressed: () {})
+                onPressed: () async {
+                  const url = 'https://josephscollege.ac.in/';
+                  if (await canLaunch(url)) {
+                    await launch(url, forceWebView: false);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                  // await FirebaseAuth.instance.signOut();
+                  // Navigator.of(context).pushReplacement(
+                  //   MaterialPageRoute(
+                  //     builder: (ctx) => AuthScreen(),
+                  //   ),
+                  // );
+                })
           ],
-          elevation: 6.0,
+          elevation: 0.0,
         ),
         body: LayoutBuilder(
           builder: (ctx, boxConstraints) => SingleChildScrollView(
@@ -86,7 +108,20 @@ class HomeScreen extends StatelessWidget {
                   name: Constants.homeCardAntiRaggingName,
                   icon: Icons.not_interested,
                   color: CupertinoColors.systemGreen,
-                  onPress: () {},
+                  onPress: () {
+                    Navigator.pushNamed(
+                      context,
+                      AntiRaggingScreen.routeName,
+                    );
+                  },
+                ),
+                Text(
+                  'Crafted With ❤',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
                 ),
               ],
             ),
