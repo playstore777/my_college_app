@@ -58,37 +58,42 @@ class _NotesScreenState extends State<NotesScreen> {
                 child: Icon(Icons.add),
               ),
               body: SingleChildScrollView(
-                child: OneSideCurveContainer(
-                  // color: Colors.transparent,
-                  size: size,
-                  mediaquery: mediaQuerySize,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 55,
-                      left: 35,
-                      right: 25,
-                    ),
-                    child: ListView(
-                      children: _notes
-                          .map((e) =>
-                              temp2(mediaQuerySize: mediaQuerySize, note: e))
-                          .toList(),
-                    ),
-                    // child: ListView.builder(
-                    //   itemCount: _notes.length,
-                    //   itemBuilder: (ctx, index) {
-                    //     // print('snapshot : ${dataSnapshot.notes.last.title}');
+                child: Column(
+                  children: [
+                    OneSideCurveContainer(
+                      // color: Colors.transparent,
+                      size: size,
+                      mediaquery: mediaQuerySize,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 55,
+                          left: 35,
+                          right: 25,
+                        ),
+                        child: Wrap(
+                          // primary: false,
+                          children: _notes
+                              .map((e) => temp2(
+                                  mediaQuerySize: mediaQuerySize, note: e))
+                              .toList(),
+                        ),
+                        // child: ListView.builder(
+                        //   itemCount: _notes.length,
+                        //   itemBuilder: (ctx, index) {
+                        //     // print('snapshot : ${dataSnapshot.notes.last.title}');
 
-                    //     return temp2(
-                    //       id: _notes[index].id,
-                    //       mediaQuerySize: mediaQuerySize,
-                    //       title: _notes[index].title,
-                    //       desc: _notes[index].desc,
-                    //       dateTime: _notes[index].dateTime,
-                    //     );
-                    //   },
-                    // ),
-                  ),
+                        //     return temp2(
+                        //       id: _notes[index].id,
+                        //       mediaQuerySize: mediaQuerySize,
+                        //       title: _notes[index].title,
+                        //       desc: _notes[index].desc,
+                        //       dateTime: _notes[index].dateTime,
+                        //     );
+                        //   },
+                        // ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
