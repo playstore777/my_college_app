@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/rendering.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:google_sign_in/google_sign_in.dart';
 // import 'package:my_college_app/screens/home_screen.dart';
 import 'sign_in_google.dart';
 
@@ -145,46 +145,50 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                       (_isLoading)
                           ? Center(
-                              child: CircularProgressIndicator(),
+                              child: Image(
+                              image: AssetImage("assets/gifs/loading1.gif"),
                             )
+                              // CircularProgressIndicator(),
+                              )
                           : ElevatedButton(
                               style: ButtonStyle(
                                   overlayColor: MaterialStateProperty.all(
-                                    Colors.purple,
+                                    Theme.of(context).primaryColor,
                                   ),
                                   backgroundColor: MaterialStateProperty.all(
-                                    Colors.teal,
+                                    Theme.of(context).accentColor,
                                   ),
                                   foregroundColor: MaterialStateProperty.all(
                                     Colors.white,
                                   )),
-                              onPressed: (_isLogin) ? _onSubmit : () {},
+                              onPressed: (_isLogin)
+                                  ? _onSubmit
+                                  : () {
+                                      // GoogleSignIn().currentUser.authentication.
+                                    },
                               child: Text((_isLogin) ? 'Login' : 'Submit'),
                             ),
                       SizedBox(
                         height: 10,
                       ),
-                      TextButton(
-                        style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all(
-                            Colors.white,
-                          ),
-                          overlayColor: MaterialStateProperty.all(
-                            Colors.teal,
-                          ),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            _isLogin = !_isLogin;
-                          });
-                        },
-                        child: Text(
-                            (_isLogin) ? 'Forgot password' : 'Instead Login'),
-                      ),
+                      // TextButton(
+                      //   style: ButtonStyle(
+                      //     foregroundColor: MaterialStateProperty.all(
+                      //       Colors.white,
+                      //     ),
+                      //     overlayColor: MaterialStateProperty.all(
+                      //       Colors.teal,
+                      //     ),
+                      //   ),
+                      //   onPressed: () {
+                      //     setState(() {
+                      //       _isLogin = !_isLogin;
+                      //     });
+                      //   },
+                      //   child: Text(
+                      //       (_isLogin) ? 'Forgot password' : 'Instead Login'),
+                      // ),
                       SignInGoogle(),
-                      ElevatedButton(
-                          onPressed: GoogleSignIn().signOut,
-                          child: Text('sign OUt'))
                     ],
                   ),
                 ),

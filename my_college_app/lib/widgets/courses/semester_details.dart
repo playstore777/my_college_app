@@ -99,6 +99,26 @@ class SemesterDetails extends StatelessWidget {
                   dataMap[''],
                   dataMap[''],
                 ),
+                tile(
+                  padding,
+                  dataMap[''],
+                  dataMap[''],
+                ),
+                tile(
+                  padding,
+                  dataMap[''],
+                  dataMap[''],
+                ),
+                tile(
+                  padding,
+                  dataMap[''],
+                  dataMap[''],
+                ),
+                tile(
+                  padding,
+                  dataMap[''],
+                  dataMap[''],
+                ),
               ],
             ),
           ),

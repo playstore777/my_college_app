@@ -4,6 +4,8 @@ import '../constants.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
+import '../resuable_ui/landscape_screen.dart';
+
 class PaymentScreen extends StatefulWidget {
   static const routeName = 'payment';
   @override
@@ -39,7 +41,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   void dispose() {
     super.dispose();
-    _razorPay.clear();
+    _razorPay?.clear();
   }
 
   Razorpay _razorPay;
@@ -47,9 +49,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
   void initState() {
     textController = TextEditingController();
     _razorPay = Razorpay();
-    _razorPay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorPay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorPay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    _razorPay?.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorPay?.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorPay?.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
     super.initState();
   }
 
@@ -67,29 +69,31 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          Constants.homeCardPaymentName,
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            TextField(
-              keyboardType: TextInputType.number,
-              controller: textController,
+    return MediaQuery.of(context).orientation == Orientation.landscape
+        ? LandscapeScreen()
+        : Scaffold(
+            appBar: AppBar(
+              title: Text(
+                Constants.homeCardPaymentName,
+              ),
             ),
-            ElevatedButton(
-              child: Text('Submit'),
-              onPressed: payment,
+            body: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  TextField(
+                    keyboardType: TextInputType.number,
+                    controller: textController,
+                  ),
+                  ElevatedButton(
+                    child: Text('Submit'),
+                    onPressed: payment,
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
   }
 }

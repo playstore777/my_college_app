@@ -35,6 +35,13 @@ dependencies:
   firebase: ^9.0.1
   google_sign_in: ^5.0.4
   google_sign_in_platform_interface: ^2.0.1
+  device_preview: ^0.7.3
+  animate_icons: ^2.0.0
+  animated_splash_screen: ^1.1.0
+  shared_preferences: ^2.0.6
+  provider: ^5.0.0
+  sqflite: ^2.0.0+3
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +64,10 @@ flutter:
     - assets/gifs/loading.gif
     - assets/gifs/loading1.gif
     - assets/gifs/loading_rocket.gif
+    - assets/gifs/man_wearing_jackets.gif
+    - assets/gifs/night_bg.gif
+    - assets/gifs/splash_screen.gif
+    - assets/gifs/lightMode.gif
 
   #   - images/a_dot_ham.jpeg
 
