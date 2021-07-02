@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:my_college_app/helpers/notes_database_helper.dart';
-import 'package:my_college_app/models/notes_entry.dart';
+
+import '/helpers/notes_database_helper.dart';
+import '/models/notes_entry.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 

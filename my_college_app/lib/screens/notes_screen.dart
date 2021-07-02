@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_college_app/screens/notes/note_display.dart';
 
 import 'package:provider/provider.dart';
 
@@ -57,61 +58,43 @@ class _NotesScreenState extends State<NotesScreen> {
                 ),
                 child: Icon(Icons.add),
               ),
-              body: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    OneSideCurveContainer(
-                      // color: Colors.transparent,
-                      size: size,
-                      mediaquery: mediaQuerySize,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 55,
-                          left: 35,
-                          right: 25,
-                        ),
-                        child: Wrap(
-                          // primary: false,
-                          children: _notes
-                              .map((e) => temp2(
-                                  mediaQuerySize: mediaQuerySize, note: e))
-                              .toList(),
-                        ),
-                        // child: ListView.builder(
-                        //   itemCount: _notes.length,
-                        //   itemBuilder: (ctx, index) {
-                        //     // print('snapshot : ${dataSnapshot.notes.last.title}');
-
-                        //     return temp2(
-                        //       id: _notes[index].id,
-                        //       mediaQuerySize: mediaQuerySize,
-                        //       title: _notes[index].title,
-                        //       desc: _notes[index].desc,
-                        //       dateTime: _notes[index].dateTime,
-                        //     );
-                        //   },
-                        // ),
+              body: Container(
+                child: OneSideCurveContainer(
+                  // color: Colors.transparent,
+                  size: size,
+                  mediaquery: mediaQuerySize,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      top: 55,
+                      left: 35,
+                      right: 25,
+                    ),
+                    child: ListView.builder(
+                      itemCount: _notes.length,
+                      itemBuilder: (ctx, index) => displayNote(
+                        note: _notes[index],
+                        mediaQuerySize: mediaQuerySize,
                       ),
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
     );
   }
 
-  Widget temp2({
-    note,
+  Widget displayNote({
+    Note note,
     mediaQuerySize,
   }) {
     return InkWell(
-      onTap: () {
-        print('tapped on : ${note.id}');
-      },
+      onTap: () => Navigator.of(context).pushNamed(
+        NoteDisplay.routeName,
+        arguments: note,
+      ),
       child: Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: Container(
-          // width: mediaQuerySize.width * 0.8,
           height: mediaQuerySize.height * 0.1,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),

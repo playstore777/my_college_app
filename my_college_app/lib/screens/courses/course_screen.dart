@@ -46,76 +46,9 @@ class CourseScreen extends StatelessWidget {
                         onTap: () => Navigator.of(context).pushNamed(
                           UndergraduateScreen.routeName,
                         ),
-                        child: OneSideCurveContainer(
-                          paddingMultiplier: 0.01,
-                          color: Colors.pink,
-                          size: size,
-                          mediaquery: mediaQuerySize,
-                          height: mediaQuerySize.height * 0.7,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                              top: 125,
-                              left: 25,
-                              bottom: 20,
-                              right: 20,
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      blurRadius: 20,
-                                      color: Colors.blueGrey,
-                                    )
-                                  ]),
-                            ),
-                          ),
-                        ),
                       ),
                     ),
                   ),
-                  // Positioned(
-                  //   bottom: size * 0.46,
-                  //   right: size * 0.05,
-                  //   child: Container(
-                  //     height: 40,
-                  //     width: 40,
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.white,
-                  //       shape: BoxShape.circle,
-                  //     ),
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.all(13.0),
-                  //       child: Container(
-                  //         decoration: BoxDecoration(
-                  //           shape: BoxShape.circle,
-                  //           color: Colors.black,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                  // Positioned(
-                  //   bottom: size * 0.46,
-                  //   left: size * 0.05,
-                  //   child: Container(
-                  //     height: 40,
-                  //     width: 40,
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.white,
-                  //       shape: BoxShape.circle,
-                  //     ),
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.all(13.0),
-                  //       child: Container(
-                  //         decoration: BoxDecoration(
-                  //           shape: BoxShape.circle,
-                  //           color: Colors.black,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),

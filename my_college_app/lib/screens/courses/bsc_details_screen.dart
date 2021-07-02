@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '/resuable_ui/reusable_container.dart';
 import '../../widgets/courses/semester_details.dart';
 import '../../resuable_ui/landscape_screen.dart';
 
@@ -10,15 +11,7 @@ class BScDetailsScreen extends StatelessWidget {
     var padding = size.width + size.height;
     return MediaQuery.of(context).orientation == Orientation.landscape
         ? LandscapeScreen()
-        : Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [
-                  Theme.of(context).primaryColor,
-                  Theme.of(context).accentColor,
-                ])),
+        : ReusableContainerDark(
             child: Scaffold(
               backgroundColor: Colors.transparent,
               appBar: AppBar(

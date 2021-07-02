@@ -1,18 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_college_app/resuable_ui/reusable_container.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:my_college_app/screens/courses/bsc_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../constants.dart';
-import '../widgets/app_drawer.dart';
-import '../widgets/home_card.dart';
-// import 'calendar_screen.dart';
 import 'notes_screen.dart';
-import 'courses/course_screen.dart';
 import 'payment_screen.dart';
-import '../resuable_ui/landscape_screen.dart';
 import 'anti_ragging_screen.dart';
+import '/constants.dart';
+import '/widgets/home_card.dart';
+import '/widgets/app_drawer.dart';
+import '/resuable_ui/landscape_screen.dart';
+import '/resuable_ui/reusable_container.dart';
+
+final userDetails = FirebaseAuth.instance.currentUser;
 
 class HomeScreen extends StatelessWidget {
   static const routeName = 'Home-screen';
@@ -21,24 +23,6 @@ class HomeScreen extends StatelessWidget {
     return MediaQuery.of(context).orientation == Orientation.landscape
         ? LandscapeScreen()
         : ReusableContainerDark(
-            // gradient: LinearGradient(
-            //   begin: Alignment.topRight,
-            //   end: Alignment.bottomLeft,
-            //   colors: [
-            //     Theme.of(context).primaryColor,
-            //     Theme.of(context).accentColor,
-            //     // Colors.teal.withOpacity(1),
-            //     // Colors.pink.withOpacity(1),
-            //   ],
-            // ),
-            // ),
-            // decoration: BoxDecoration(
-            //     image: DecorationImage(
-            //       image: AssetImage('images/background_images/bg_blue_moon.jpg'),
-            //       // image: AssetImage('assets/images/background_images/bg_blue_moon.jpg'),
-            //       fit: BoxFit.cover,
-            //     ),
-            //     ),
             child: Scaffold(
               backgroundColor: Colors.transparent,
               drawer: AppDrawer(),
@@ -58,24 +42,19 @@ class HomeScreen extends StatelessWidget {
                 ),
                 actions: <Widget>[
                   IconButton(
-                      tooltip: 'Navigate to Website',
-                      icon: Icon(
-                        Icons.subdirectory_arrow_right_outlined,
-                      ),
-                      onPressed: () async {
-                        const url = 'https://josephscollege.ac.in/';
-                        if (await canLaunch(url)) {
-                          await launch(url, forceWebView: false);
-                        } else {
-                          throw 'Could not launch $url';
-                        }
-                        // await FirebaseAuth.instance.signOut();
-                        // Navigator.of(context).pushReplacement(
-                        //   MaterialPageRoute(
-                        //     builder: (ctx) => AuthScreen(),
-                        //   ),
-                        // );
-                      })
+                    tooltip: 'Navigate to Website',
+                    icon: Icon(
+                      Icons.subdirectory_arrow_right_outlined,
+                    ),
+                    onPressed: () async {
+                      const url = 'https://josephscollege.ac.in/';
+                      if (await canLaunch(url)) {
+                        await launch(url, forceWebView: false);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    },
+                  )
                 ],
                 elevation: 0.0,
               ),
@@ -88,23 +67,21 @@ class HomeScreen extends StatelessWidget {
                         name: Constants.homeCardCourseName,
                         icon: Icons.book,
                         color: Colors.pinkAccent[400],
-                        onPress: () => Navigator.of(context).pushNamed(
-                          CourseScreen.routeName,
-                        ),
+                        onPress: () {
+                          if (userDetails.email.contains('467')) {
+                            return Navigator.of(context)
+                                .pushNamed(BScScreen.routeName);
+                          }
+                        },
                       ),
                       HomeCard(
-                        // Still Incomplete!
+                        // Done Completed!
                         name: 'Notes',
-                        // Constants.homeCardCalendarName,
                         icon: Icons.event_note_sharp,
-                        // Icons.calendar_today,
                         color: CupertinoColors.systemBlue,
                         onPress: () => Navigator.of(context).pushNamed(
                           NotesScreen.routeName,
                         ),
-                        // Navigator.of(context).pushNamed(
-                        //   CalendarScreen.routeName,
-                        // ),
                       ),
                       HomeCard(
                         name: Constants.homeCardPaymentName,

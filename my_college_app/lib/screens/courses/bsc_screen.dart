@@ -7,13 +7,13 @@ import '../../widgets/courses/course_details.dart';
 import '../../resuable_ui/landscape_screen.dart';
 
 class BScScreen extends StatelessWidget {
+  static const routeName = 'BScScreen';
   final userDetails = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
-    // print('BSc(MSCs) ${userDetails.email.contains('467')}');
     return MediaQuery.of(context).orientation == Orientation.landscape
         ? LandscapeScreen()
-        : ReusableContainer(
+        : ReusableContainerDark(
             child: Scaffold(
               backgroundColor: Colors.transparent,
               appBar: AppBar(

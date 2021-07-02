@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'providers/mode_preferences_provider.dart';
 import 'screens/anti_ragging_screen.dart';
 import 'screens/payment_screen.dart';
-import 'screens/courses/undergraduate_screen.dart';
-import 'screens/courses/course_screen.dart';
 import 'screens/home_screen.dart';
-// import 'screens/calendar_screen.dart';
 import 'screens/notes_screen.dart';
+import 'screens/courses/undergraduate_screen.dart';
+import 'screens/courses/bsc_screen.dart';
+import 'screens/notes/note_display.dart';
 import 'screens/notes/notes_edit_screen.dart';
 import 'auth/screens/auth_screen.dart';
+import 'providers/mode_preferences_provider.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -62,13 +62,13 @@ class _MyAppState extends State<MyApp> {
         ),
         routes: {
           HomeScreen.routeName: (_) => HomeScreen(),
-          CourseScreen.routeName: (_) => CourseScreen(),
           UndergraduateScreen.routeName: (_) => UndergraduateScreen(),
+          BScScreen.routeName: (_) => BScScreen(),
           NotesScreen.routeName: (_) => NotesScreen(),
-          // CalendarScreen.routeName: (_) => CalendarScreen(),
           PaymentScreen.routeName: (_) => PaymentScreen(),
           AntiRaggingScreen.routeName: (_) => AntiRaggingScreen(),
           NotesEditScreen.routeName: (_) => NotesEditScreen(),
+          NoteDisplay.routeName: (_) => NoteDisplay(),
         },
       ),
     );

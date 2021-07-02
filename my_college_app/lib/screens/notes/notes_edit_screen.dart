@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '/resuable_ui/reusable_container.dart';
 import '/helpers/notes_database_helper.dart';
 import '/models/notes_entry.dart';
 
@@ -12,6 +13,7 @@ class NotesEditScreen extends StatefulWidget {
 class _NotesEditScreenState extends State<NotesEditScreen> {
   TextEditingController _titleController = TextEditingController();
   TextEditingController _descController = TextEditingController();
+  Note note;
   bool isEditing = false;
   bool isLoading = false;
 
@@ -20,14 +22,22 @@ class _NotesEditScreenState extends State<NotesEditScreen> {
     setState(() {
       isLoading = true;
     });
-    Note note = Note(
-      title: _titleController.text,
-      desc: _descController.text,
-      dateTime: DateTime.now(),
-      // tag: 'general',
-    );
 
-    await NotesDatabase.instance.create(note);
+    if (isEditing) {
+      note.title = _titleController.text;
+      note.desc = _descController.text;
+      await NotesDatabase.instance.update(note);
+      Navigator.of(context).pop();
+      Navigator.of(context).pop();
+    } else {
+      Note myNote = Note(
+        title: _titleController.text,
+        desc: _descController.text,
+        dateTime: DateTime.now(),
+        // tag: 'general',
+      );
+      await NotesDatabase.instance.create(myNote);
+    }
     setState(() {
       _titleController.clear();
       _descController.clear();
@@ -37,15 +47,22 @@ class _NotesEditScreenState extends State<NotesEditScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, Object> dataArgs =
+        ModalRoute.of(context).settings.arguments as Map<String, Object>;
+    if (dataArgs != null) {
+      isEditing = dataArgs['isEditing'];
+      note = dataArgs['Note'];
+    }
     Size size = MediaQuery.of(context).size;
-    // var sumOfSizes = size.width + size.height;
-    return Container(
-      color: Colors.blueGrey[200],
+    return ReusableContainerDark(
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          // backgroundColor: Colors.transparent,
-          title: Text('Notes'),
+          backgroundColor: Colors.transparent,
+          title: Text(
+            '${(isEditing) ? 'Edit' : 'Add'} Note',
+          ),
+          centerTitle: true,
           // elevation: 0.0,
           actions: [
             if (isLoading)
@@ -65,67 +82,84 @@ class _NotesEditScreenState extends State<NotesEditScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: EdgeInsets.all(15),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.blueGrey[100],
-                    boxShadow: [
-                      BoxShadow(
-                        spreadRadius: 1,
-                        blurRadius: 2,
-                        offset: Offset(0, 1),
-                        color: Colors.black54,
-                      ),
-                    ],
-                  ),
-                  width: size.width * 1,
-                  height: size.height * 0.12,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      controller: _titleController,
-                      maxLength: 80,
-                      maxLines: 2,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.blueGrey[100],
-                    boxShadow: [
-                      BoxShadow(
-                        spreadRadius: 1,
-                        blurRadius: 2,
-                        offset: Offset(0, 1),
-                        color: Colors.black54,
-                      ),
-                    ],
-                  ),
-                  width: size.width * 1,
-                  height: size.height * 0.75,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: TextField(
-                      controller: _descController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                      ),
-                      expands: true,
-                      maxLines: null,
-                    ),
-                  ),
-                ),
-              ),
+              title(size, note),
+              description(size, note),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding title(Size size, Note note) {
+    if (note != null) {
+      _titleController.text = note.title;
+      print('note.title: ${note.title}');
+    }
+    return Padding(
+      padding: EdgeInsets.all(15),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white24,
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 1),
+              color: Colors.white,
+            ),
+          ],
+        ),
+        width: size.width * 1,
+        height: size.height * 0.12,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextField(
+            controller: _titleController,
+            maxLength: 80,
+            maxLines: 2,
+            decoration: InputDecoration(
+              hintText: 'Title.....',
+              border: InputBorder.none,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding description(Size size, Note note) {
+    if (note != null) {
+      _descController.text = note.desc;
+    }
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.white24,
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 1),
+              color: Colors.white,
+            ),
+          ],
+        ),
+        width: size.width * 1,
+        height: size.height * 0.75,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: TextField(
+            controller: _descController,
+            decoration: InputDecoration(
+              hintText: 'Description....',
+              border: InputBorder.none,
+            ),
+            expands: true,
+            maxLines: null,
           ),
         ),
       ),

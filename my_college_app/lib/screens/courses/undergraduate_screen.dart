@@ -17,7 +17,7 @@ class UndergraduateScreen extends StatelessWidget {
                     end: Alignment.bottomLeft,
                     colors: [
                   Theme.of(context).primaryColor,
-                  Theme.of(context).accentColor,
+                  Theme.of(context).accentColor.withOpacity(0.5),
                 ])),
             child: Scaffold(
               backgroundColor: Colors.transparent,
