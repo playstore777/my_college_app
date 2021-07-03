@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_college_app/screens/courses/bcom/bcom_details.dart';
 
 import 'screens/anti_ragging_screen.dart';
 import 'screens/payment_screen.dart';
@@ -63,12 +64,13 @@ class _MyAppState extends State<MyApp> {
         routes: {
           HomeScreen.routeName: (_) => HomeScreen(),
           UndergraduateScreen.routeName: (_) => UndergraduateScreen(),
-          BScScreen.routeName: (_) => BScScreen(),
           NotesScreen.routeName: (_) => NotesScreen(),
-          PaymentScreen.routeName: (_) => PaymentScreen(),
-          AntiRaggingScreen.routeName: (_) => AntiRaggingScreen(),
           NotesEditScreen.routeName: (_) => NotesEditScreen(),
           NoteDisplay.routeName: (_) => NoteDisplay(),
+          PaymentScreen.routeName: (_) => PaymentScreen(),
+          AntiRaggingScreen.routeName: (_) => AntiRaggingScreen(),
+          BScScreen.routeName: (_) => BScScreen(),
+          BComDetails.routeName: (_) => BComDetails(),
         },
       ),
     );
@@ -90,7 +92,6 @@ class AppStart extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        print('userSnapshot from main.dart: $userSnapshot');
         if (userSnapshot.hasData) {
           // hasData means we have the token, else the user is not logged in!
           // Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);

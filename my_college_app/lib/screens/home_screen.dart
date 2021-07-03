@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:my_college_app/screens/courses/bsc_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'notes_screen.dart';
 import 'payment_screen.dart';
 import 'anti_ragging_screen.dart';
+import 'courses/bsc_screen.dart';
 import '/constants.dart';
 import '/widgets/home_card.dart';
 import '/widgets/app_drawer.dart';
@@ -68,10 +68,14 @@ class HomeScreen extends StatelessWidget {
                         icon: Icons.book,
                         color: Colors.pinkAccent[400],
                         onPress: () {
-                          if (userDetails.email.contains('467')) {
+                          if (userDetails.email.contains('467') ||
+                              userDetails.email.contains('468') ||
+                              // incomplete hai ye dekh please re bhai,
+                              // ignore mat kar, malum bhul jata tu(A<3)
+                              userDetails.email.contains('474')) {
                             return Navigator.of(context)
                                 .pushNamed(BScScreen.routeName);
-                          }
+                          } else if (userDetails.email.contains('401')) {}
                         },
                       ),
                       HomeCard(

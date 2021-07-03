@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:animate_icons/animate_icons.dart';
 import 'package:provider/provider.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
 import '../providers/mode_preferences_provider.dart';
 import '../resuable_ui/reusable_container.dart';
@@ -57,37 +55,11 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              // AppBar(
-              //   backgroundColor: Colors.transparent,
-              //   elevation: 0.0,
-              //   leading: CircleAvatar(
-              //     child: Image.network(
-              //       'https://newevolutiondesigns.com/images/freebies/cool-wallpaper-1.jpg',
-              //       fit: BoxFit.cover,
-              //     ),
-              //   ),
-              //   title: Text('Name Here!'),
-              //   // automaticallyImplyLeading: false,
-              // ),
               Stack(
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      // gradient: LinearGradient(
-                      //     begin: Alignment.topLeft,
-                      //     end: Alignment.bottomRight,
-                      //     colors: [
-                      //       Theme.of(context).primaryColorLight,
-                      //       Color(0xff0361ad)
-                      //       // Colors.deepPurple,
-                      //       // Colors.blue,
-                      //       // Theme.of(context).accentColor,
-                      //       // Colors.pinkAccent,
-                      //     ]),
-                      color:
-                          // Colors.black26,
-                          // Colors.tealAccent.withOpacity(0.5),
-                          const Color(0xff7c94b6),
+                      color: const Color(0xff7c94b6),
                       image: DecorationImage(
                         image: (user.photoURL == null)
                             ? AssetImage("assets/gifs/man_wearing_jackets.gif")

@@ -42,9 +42,6 @@ class OneSideCurveContainer extends StatelessWidget {
             topLeft: Radius.circular(
               size * radiusMultiplier,
             ),
-            // topRight: Radius.circular(
-            //   size * 0.08,
-            // ),
           ),
           color: color,
         ),

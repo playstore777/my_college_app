@@ -36,7 +36,6 @@ dependencies:
   google_sign_in: ^5.0.4
   google_sign_in_platform_interface: ^2.0.1
   device_preview: ^0.7.3
-  animate_icons: ^2.0.0
   animated_splash_screen: ^1.1.0
   shared_preferences: ^2.0.6
   provider: ^5.0.0

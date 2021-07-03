@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
+import '/resuable_ui/reusable_container.dart';
+import '/resuable_ui/landscape_screen.dart';
+import '/constants.dart';
 
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-
-import '../resuable_ui/landscape_screen.dart';
 
 class PaymentScreen extends StatefulWidget {
   static const routeName = 'payment';
@@ -69,29 +69,63 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return MediaQuery.of(context).orientation == Orientation.landscape
         ? LandscapeScreen()
-        : Scaffold(
-            appBar: AppBar(
-              title: Text(
-                Constants.homeCardPaymentName,
+        : ReusableContainerDark(
+            child: Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                backgroundColor: Colors.transparent,
+                title: Text(
+                  Constants.homeCardPaymentName,
+                ),
               ),
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  TextField(
-                    keyboardType: TextInputType.number,
-                    controller: textController,
+              body: Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: mediaQuery.height * 0.3,
+                  horizontal: mediaQuery.width * 0.1,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.grey[300],
                   ),
-                  ElevatedButton(
-                    child: Text('Submit'),
-                    onPressed: payment,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 4),
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '₹',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: TextField(
+                            keyboardType: TextInputType.number,
+                            controller: textController,
+                            decoration: InputDecoration(
+                              hintText: 'Enter the Amount',
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: TextButton(
+                            child: Text('Submit'),
+                            onPressed: payment,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
           );

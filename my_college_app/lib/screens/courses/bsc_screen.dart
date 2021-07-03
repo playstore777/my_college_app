@@ -1,10 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_college_app/resuable_ui/reusable_container.dart';
-import 'package:my_college_app/screens/courses/bsc_details_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import '../../widgets/courses/course_details.dart';
-import '../../resuable_ui/landscape_screen.dart';
+import '/resuable_ui/landscape_screen.dart';
+import '/resuable_ui/reusable_container.dart';
+// import '/screens/courses/bsc_details_screen.dart';
+import '/widgets/courses/course_details.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class BScScreen extends StatelessWidget {
   static const routeName = 'BScScreen';
@@ -32,41 +34,46 @@ class BScScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    if (userDetails.email.contains('467'))
-                      CourseDetails(
-                        course: 'BSc',
-                        subjects: 'MSCs',
-                        semesters: 'VI',
-                        seats: '40',
-                        onPress: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (ctx) => BScDetailsScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                    if (userDetails.email.contains('464'))
-                      CourseDetails(
-                        course: 'BSc',
-                        subjects: 'MECs',
-                        semesters: 'VI',
-                        seats: '40',
-                      ),
-                    if (userDetails.email.contains('474'))
-                      CourseDetails(
-                        course: 'BSc',
-                        subjects: 'MPCs',
-                        semesters: 'VI',
-                        seats: '40',
-                      ),
+                    CourseDetails(
+                      course: 'BSc',
+                      subjects: 'MSCs',
+                      semesters: 'VI',
+                      seats: '40',
+                      onPress: () => _navigateToCourse(
+                          'https://josephscollege.ac.in/wp-content/uploads/2021/02/Phase-3_MSCS-1-min.pdf'),
+                    ),
+                    CourseDetails(
+                      course: 'BSc',
+                      subjects: 'MECs',
+                      semesters: 'VI',
+                      seats: '40',
+                      onPress: () => _navigateToCourse(
+                          'https://josephscollege.ac.in/wp-content/uploads/2021/02/Phase-3_MECS-min.pdf'),
+                    ),
+                    CourseDetails(
+                      course: 'BSc',
+                      subjects: 'MPCs',
+                      semesters: 'VI',
+                      seats: '40',
+                      onPress: () => _navigateToCourse(
+                          'https://josephscollege.ac.in/wp-content/uploads/2021/02/Phase-3_MPCS-min.pdf'),
+                    ),
                     SizedBox(
                       height: 20,
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
           );
+  }
+
+  void _navigateToCourse(String link) async {
+    final url = '$link';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }
