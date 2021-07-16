@@ -23,14 +23,13 @@ class AntiRaggingScreen extends StatelessWidget {
                 centerTitle: true,
                 title: Text('Anti Ragging'),
               ),
-              body: SingleChildScrollView(
-                child: OneSideCurveContainer(
-                  // color: Colors.transparent,
-                  size: size,
-                  mediaquery: mediaQuerySize,
-                  height: mediaQuerySize.height,
-                  child: Padding(
-                    padding: EdgeInsets.all(size * 0.05),
+              body: OneSideCurveContainer(
+                size: size,
+                mediaquery: mediaQuerySize,
+                height: mediaQuerySize.height,
+                child: Padding(
+                  padding: EdgeInsets.all(size * 0.05),
+                  child: SingleChildScrollView(
                     child: Column(
                       children: <Widget>[
                         // SizedBox(

@@ -16,7 +16,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   TextEditingController textController;
 
   void payment() {
-    // this function is not mandatory, but the statemenst/code under it is!
+    // this function is not mandatory, but the statement/code under it is!
     var options = {
       'key': 'rzp_test_Uv9wo6uX9ue8vz',
       'amount': num.parse(textController.text) * 100,
@@ -55,16 +55,18 @@ class _PaymentScreenState extends State<PaymentScreen> {
     super.initState();
   }
 
-  void _handlePaymentSuccess() {
-    print('Success!');
+  void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    print('Success paymentId : ${response.paymentId}');
+    print('Success orderId : ${response.orderId}');
+    print('Success Signature : ${response.signature}');
   }
 
-  void _handlePaymentError() {
-    print('Error!');
+  void _handlePaymentError(response) {
+    print('Error! : ${response.body}');
   }
 
-  void _handleExternalWallet() {
-    print('Wallet!');
+  void _handleExternalWallet(response) {
+    print('Wallet! : ${response.body}');
   }
 
   @override
@@ -81,48 +83,49 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   Constants.homeCardPaymentName,
                 ),
               ),
-              body: Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: mediaQuery.height * 0.3,
-                  horizontal: mediaQuery.width * 0.1,
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.grey[300],
+              body: Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: mediaQuery.width * 0.1,
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 4),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            '₹',
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 20,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey[300],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              '₹',
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 20,
+                              ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: TextField(
-                            keyboardType: TextInputType.number,
-                            controller: textController,
-                            decoration: InputDecoration(
-                              hintText: 'Enter the Amount',
+                          Expanded(
+                            flex: 3,
+                            child: TextField(
+                              keyboardType: TextInputType.number,
+                              controller: textController,
+                              decoration: InputDecoration(
+                                hintText: 'Enter the Amount',
+                              ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: TextButton(
-                            child: Text('Submit'),
-                            onPressed: payment,
+                          Expanded(
+                            flex: 1,
+                            child: TextButton(
+                              child: Text('Submit'),
+                              onPressed: payment,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

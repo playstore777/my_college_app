@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_college_app/screens/courses/bcom/bcom_details.dart';
 
 import 'screens/anti_ragging_screen.dart';
 import 'screens/payment_screen.dart';
@@ -7,6 +6,7 @@ import 'screens/home_screen.dart';
 import 'screens/notes_screen.dart';
 import 'screens/courses/undergraduate_screen.dart';
 import 'screens/courses/bsc_screen.dart';
+import 'screens/courses/bcom/bcom_details.dart';
 import 'screens/notes/note_display.dart';
 import 'screens/notes/notes_edit_screen.dart';
 import 'auth/screens/auth_screen.dart';
@@ -17,6 +17,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -96,7 +97,11 @@ class AppStart extends StatelessWidget {
           // hasData means we have the token, else the user is not logged in!
           // Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
 
-          return HomeScreen();
+          return ShowCaseWidget(
+            builder: Builder(
+              builder: (_) => HomeScreen(),
+            ),
+          );
         }
         return AuthScreen();
       },

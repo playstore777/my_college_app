@@ -86,31 +86,8 @@ class HomeCard extends StatelessWidget {
               child: Text(
                 this.name,
                 style: TextStyle(
-                  // shadows: <Shadow>[
-                  //   Shadow(
-                  //     offset: Offset(4, 4),
-                  //     blurRadius: 15,
-                  //     color: Colors.white,
-                  //   ),
-                  //   Shadow(
-                  //     offset: Offset(2, 2),
-                  //     blurRadius: 15,
-                  //     color: Colors.white,
-                  //   ),
-                  //   Shadow(
-                  //     offset: Offset(-2, -2),
-                  //     blurRadius: 15,
-                  //     color: Colors.white,
-                  //   ),
-                  //   Shadow(
-                  //     offset: Offset(-4, -4),
-                  //     blurRadius: 15,
-                  //     color: Colors.white,
-                  //   ),
-                  // ],
                   fontSize: size * 0.038,
                   color: Colors.white,
-                  // color: Colors.grey[600],
                 ),
               ),
             ),
