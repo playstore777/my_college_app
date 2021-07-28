@@ -62,11 +62,7 @@ App Drawer Screen dark
 
 Tutorials
 
-![tutorial screen](screenshots/tutorial_screen1.jpg)
-![tutorial screen](screenshots/tutorial_screen2.jpg)
-![tutorial screen](screenshots/tutorial_screen3.jpg)
-![tutorial screen](screenshots/tutorial_screen4.jpg)
-![tutorial screen](screenshots/tutorial_screen5.jpg)
+![tutorial screen](screenshots/tutorial_screen1.jpg) ![tutorial screen](screenshots/tutorial_screen2.jpg) ![tutorial screen](screenshots/tutorial_screen3.jpg) ![tutorial screen](screenshots/tutorial_screen4.jpg) ![tutorial screen](screenshots/tutorial_screen5.jpg)
 
 
 ## Getting Started
