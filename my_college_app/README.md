@@ -1,6 +1,11 @@
 # my_college_app
 
-A new Flutter project.
+
+My College App Ui Screenshots
+![login screen](screenshots/login_screen.png)
+
+
+
 
 ## Getting Started
 
