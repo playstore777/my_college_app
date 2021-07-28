@@ -2,7 +2,12 @@
 
 
 My College App Ui Screenshots
+
 ![login screen](screenshots/login_screen.jpg)
+
+Login Screen
+
+
 
 
 
