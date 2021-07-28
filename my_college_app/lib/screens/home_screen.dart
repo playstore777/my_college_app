@@ -6,17 +6,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'anti_ragging_screen.dart';
 import 'notes_screen.dart';
 import 'payment_screen.dart';
-import 'anti_ragging_screen.dart';
+import 'courses/all_courses.dart';
 import 'courses/bsc_screen.dart';
 import 'courses/bcom/bcom_details.dart';
 import '/constants.dart';
-import '/widgets/home_card.dart';
-import '/widgets/app_drawer.dart';
 import '/resuable_ui/landscape_screen.dart';
 import '/resuable_ui/reusable_container.dart';
 import '/resuable_ui/tutorial.dart';
+import '/widgets/app_drawer.dart';
+import '/widgets/home_card.dart';
 
 final userDetails = FirebaseAuth.instance.currentUser;
 
@@ -110,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: <Widget>[
                       Tutorial(
                         globalKey: courseKey,
-                        description: 'Here you can find your Course detials',
+                        description: 'Here you can find your Course details',
                         child: HomeCard(
                           // can say Completed?, I guess!
                           name: Constants.homeCardCourseName,
@@ -125,6 +126,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             } else if (userDetails.email.contains('401')) {
                               return Navigator.of(context)
                                   .pushNamed(BComDetails.routeName);
+                            } else {
+                              return Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (ctx) => AllCourses(),
+                                ),
+                              );
                             }
                           },
                         ),

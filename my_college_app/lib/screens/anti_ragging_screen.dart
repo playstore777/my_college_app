@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_college_app/resuable_ui/oneside_curve_container.dart';
-import 'package:my_college_app/resuable_ui/reusable_container.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import '../resuable_ui/landscape_screen.dart';
+import '/resuable_ui/oneside_curve_container.dart';
+import '/resuable_ui/reusable_container.dart';
+import '/resuable_ui/landscape_screen.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 class AntiRaggingScreen extends StatelessWidget {
   static const routeName = 'Anti-Ragging';

@@ -1,8 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:my_college_app/custom_exceptions/unregistered_email_exception.dart';
+
+import '/custom_exceptions/unregistered_email_exception.dart';
 
 class SignInGoogle extends StatelessWidget {
   Future<UserCredential> _signInWithGoogle(context) async {

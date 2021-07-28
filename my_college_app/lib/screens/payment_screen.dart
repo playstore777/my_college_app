@@ -66,7 +66,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   }
 
   void _handleExternalWallet(response) {
-    print('Wallet! : ${response.body}');
+    print('Wallet? : ${response.body}');
   }
 
   @override
