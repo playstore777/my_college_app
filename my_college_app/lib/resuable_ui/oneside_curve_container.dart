@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../providers/mode_preferences_provider.dart';
+import '../providers/data_provider.dart';
 
 import 'package:provider/provider.dart';
 
@@ -23,7 +23,7 @@ class OneSideCurveContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // print('color from oneside.... : $color');
-    mode = Provider.of<ModePreferencesProvider>(context).mode;
+    mode = Provider.of<DataProvider>(context).mode;
     return Padding(
       padding: EdgeInsets.only(
         top: size * paddingMultiplier,

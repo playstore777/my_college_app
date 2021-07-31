@@ -10,7 +10,7 @@ import 'screens/courses/bcom/bcom_details.dart';
 import 'screens/notes/note_display.dart';
 import 'screens/notes/notes_edit_screen.dart';
 import 'auth/screens/auth_screen.dart';
-import 'providers/mode_preferences_provider.dart';
+import 'providers/data_provider.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (ctx) => ModePreferencesProvider(),
+      create: (ctx) => DataProvider(),
       child: MaterialApp(
         // locale: DevicePreview.locale(context), // Add the locale here
         // builder: DevicePreview.appBuilder, // Add the builder here

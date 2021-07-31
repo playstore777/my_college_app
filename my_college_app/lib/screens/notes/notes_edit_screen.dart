@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_college_app/screens/notes/note_display.dart';
 
 import '/resuable_ui/reusable_container.dart';
 import '/helpers/notes_database_helper.dart';
@@ -18,6 +19,7 @@ class _NotesEditScreenState extends State<NotesEditScreen> {
   bool isLoading = false;
 
   void _onSubmit() async {
+    var createdNote;
     if (_titleController == null) return;
     setState(() {
       isLoading = true;
@@ -28,7 +30,7 @@ class _NotesEditScreenState extends State<NotesEditScreen> {
       note.desc = _descController.text;
       await NotesDatabase.instance.update(note);
       Navigator.of(context).pop();
-      Navigator.of(context).pop();
+      // Navigator.of(context).pop();
     } else {
       Note myNote = Note(
         title: _titleController.text,
@@ -36,13 +38,17 @@ class _NotesEditScreenState extends State<NotesEditScreen> {
         dateTime: DateTime.now(),
         // tag: 'general',
       );
-      await NotesDatabase.instance.create(myNote);
+      createdNote = await NotesDatabase.instance.create(myNote);
+      // print('my dummy note : $dummyNote');
     }
     setState(() {
       _titleController.clear();
       _descController.clear();
       isLoading = false;
     });
+    Navigator.of(context).pop();
+    Navigator.of(context)
+        .pushNamed(NoteDisplay.routeName, arguments: createdNote);
   }
 
   @override

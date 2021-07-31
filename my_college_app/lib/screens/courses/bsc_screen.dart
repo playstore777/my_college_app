@@ -1,12 +1,15 @@
+// flutter packages
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
+// App packages
 import '/resuable_ui/landscape_screen.dart';
 import '/resuable_ui/reusable_container.dart';
 // import '/screens/courses/bsc_details_screen.dart';
 import '/widgets/courses/course_details.dart';
 
+// dependencies
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BScScreen extends StatelessWidget {
   static const routeName = 'BScScreen';

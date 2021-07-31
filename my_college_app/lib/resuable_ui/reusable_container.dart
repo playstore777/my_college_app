@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../providers/mode_preferences_provider.dart';
+import '../providers/data_provider.dart';
 
 // import 'package:shared_preferences/shared_preferences.dart';
 import 'package:provider/provider.dart';
@@ -53,7 +53,7 @@ class _ReusableContainerDarkState extends State<ReusableContainerDark> {
 
   @override
   Widget build(BuildContext context) {
-    _isDark = Provider.of<ModePreferencesProvider>(context).mode;
+    _isDark = Provider.of<DataProvider>(context).mode;
     return Container(
       decoration: (_isDark)
           ? BoxDecoration(

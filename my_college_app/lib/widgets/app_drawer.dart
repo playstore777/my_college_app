@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/mode_preferences_provider.dart';
+import '../providers/data_provider.dart';
 import '../resuable_ui/reusable_container.dart';
 
 class AppDrawer extends StatefulWidget {
@@ -34,7 +34,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
     setState(() {
       _isDark = !_isDark;
     });
-    Provider.of<ModePreferencesProvider>(context, listen: false).changeMode();
+    Provider.of<DataProvider>(context, listen: false).changeMode();
     return _isDark;
   }
 

@@ -1,11 +1,14 @@
+// flutter packages
 import 'package:flutter/foundation.dart';
 
+// App Packages
 import '/helpers/notes_database_helper.dart';
 import '/models/notes_entry.dart';
 
+// dependencies
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ModePreferencesProvider with ChangeNotifier {
+class DataProvider with ChangeNotifier {
   List<Note> _notes = [];
 
   List<Note> get notes {
@@ -18,7 +21,7 @@ class ModePreferencesProvider with ChangeNotifier {
     // print('Notes List: ${_notes}');
   }
 
-  ModePreferencesProvider() {
+  DataProvider() {
     _loadFromPrefs();
   }
   bool _modePrefs = false;

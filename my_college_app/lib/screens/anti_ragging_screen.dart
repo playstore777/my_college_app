@@ -24,39 +24,41 @@ class AntiRaggingScreen extends StatelessWidget {
                 centerTitle: true,
                 title: Text('Anti Ragging'),
               ),
-              body: OneSideCurveContainer(
-                size: size,
-                mediaquery: mediaQuerySize,
-                height: mediaQuerySize.height,
-                child: Padding(
-                  padding: EdgeInsets.all(size * 0.05),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: <Widget>[
-                        // SizedBox(
-                        //   height: 50,
-                        // ),
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //       color: Colors.white,
-                        //       borderRadius: BorderRadius.only(
-                        //         topLeft: Radius.circular(50),
-                        //         topRight: Radius.circular(50),
-                        //       )),
-                        //   padding: EdgeInsets.all(50),
-                        //   child: Column(
-                        //     children: [
-                        AntiRaggingCard(),
-                        AntiRaggingCard(),
-                        AntiRaggingCard(),
-                        AntiRaggingCard(),
-                        //       SizedBox(
-                        //         height: 250,
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-                      ],
+              body: Container(
+                child: OneSideCurveContainer(
+                  size: size,
+                  mediaquery: mediaQuerySize,
+                  height: mediaQuerySize.height,
+                  child: Padding(
+                    padding: EdgeInsets.all(size * 0.03),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          // SizedBox(
+                          //   height: 50,
+                          // ),
+                          // Container(
+                          //   decoration: BoxDecoration(
+                          //       color: Colors.white,
+                          //       borderRadius: BorderRadius.only(
+                          //         topLeft: Radius.circular(50),
+                          //         topRight: Radius.circular(50),
+                          //       )),
+                          //   padding: EdgeInsets.all(50),
+                          //   child: Column(
+                          //     children: [
+                          AntiRaggingCard(),
+                          AntiRaggingCard(),
+                          AntiRaggingCard(),
+                          AntiRaggingCard(),
+                          //       SizedBox(
+                          //         height: 250,
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
