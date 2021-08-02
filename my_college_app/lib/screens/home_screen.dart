@@ -1,11 +1,14 @@
+// flutter Packages
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+// dependencies
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// App Packages
 import 'anti_ragging_screen.dart';
 import 'notes_screen.dart';
 import 'payment_screen.dart';
@@ -29,6 +32,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _user = FirebaseAuth.instance.currentUser;
   final websiteNavigationKey = GlobalKey();
   final courseKey = GlobalKey();
   final notesKey = GlobalKey();
@@ -84,24 +88,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 actions: <Widget>[
-                  Tutorial(
-                    globalKey: websiteNavigationKey,
-                    description: 'You can visit the college Website here',
-                    child: IconButton(
-                      tooltip: 'Navigate to Website',
-                      icon: Icon(
-                        Icons.subdirectory_arrow_right_outlined,
-                      ),
+                  if (_user.displayName == null)
+                    IconButton(
+                      icon: Icon(Icons.logout),
                       onPressed: () async {
-                        const url = 'https://josephscollege.ac.in/';
-                        if (await canLaunch(url)) {
-                          await launch(url, forceWebView: false);
-                        } else {
-                          throw 'Could not launch $url';
-                        }
+                        await FirebaseAuth.instance.signOut();
+                        // Provider.of<DataProvider>(context).close();
                       },
                     ),
-                  )
+                  if (_user.displayName != null)
+                    Tutorial(
+                      globalKey: websiteNavigationKey,
+                      description: 'You can visit the college Website here',
+                      child: IconButton(
+                        tooltip: 'Navigate to Website',
+                        icon: Icon(
+                          Icons.subdirectory_arrow_right_outlined,
+                        ),
+                        onPressed: () async {
+                          const url = 'https://josephscollege.ac.in/';
+                          if (await canLaunch(url)) {
+                            await launch(url, forceWebView: false);
+                          } else {
+                            throw 'Could not launch $url';
+                          }
+                        },
+                      ),
+                    )
                 ],
                 elevation: 0.0,
               ),

@@ -21,6 +21,12 @@ class DataProvider with ChangeNotifier {
     // print('Notes List: ${_notes}');
   }
 
+  // void close() {
+  //   this._notes.clear();
+  //   NotesDatabase.instance.close();
+  //   notifyListeners();
+  // }
+
   DataProvider() {
     _loadFromPrefs();
   }

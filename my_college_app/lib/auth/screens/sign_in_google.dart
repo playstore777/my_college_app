@@ -1,16 +1,19 @@
+// flutter packages
 import 'package:flutter/material.dart';
 
+// dependencies
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+// App Packages
 import '/custom_exceptions/unregistered_email_exception.dart';
 
 class SignInGoogle extends StatelessWidget {
   Future<UserCredential> _signInWithGoogle(context) async {
     // Trigger the authentication flow
     final googleUser = await GoogleSignIn().signIn();
-    print('googleUser : $googleUser');
-    print('googleUser email : ${googleUser.email}');
+    // print('googleUser : $googleUser');
+    // print('googleUser email : ${googleUser.email}');
     if (!(googleUser.email).contains('@josephscollege')) {
       showDialog(
         context: context,
@@ -32,8 +35,8 @@ class SignInGoogle extends StatelessWidget {
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
 
-      print('googleAuth : $googleAuth');
-      print('googleAuth type : ${googleAuth.runtimeType}');
+      // print('googleAuth : $googleAuth');
+      // print('googleAuth type : ${googleAuth.runtimeType}');
 
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
@@ -41,9 +44,9 @@ class SignInGoogle extends StatelessWidget {
         idToken: googleAuth.idToken,
       );
 
-      print('credential : $credential');
-      print('credential Type : ${credential.runtimeType}');
-      print('Signned In, YAAAAAY!');
+      // print('credential : $credential');
+      // print('credential Type : ${credential.runtimeType}');
+      // print('Signned In, YAAAAAY!');
       // Once signed in, return the UserCredential
       return await FirebaseAuth.instance.signInWithCredential(credential);
     }
@@ -80,19 +83,41 @@ class SignInGoogle extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          color: Colors.white,
+          borderRadius: BorderRadius.circular(5),
+          color: Colors.blue,
         ),
         width: 250,
-        height: 80,
+        height: 60,
         alignment: Alignment.center,
-        child: Text(
-          'Google Sign In',
-          style: TextStyle(
-            color: Colors.blue,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 6),
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'assets/images/google_auth/google-logo.png'),
+                      fit: BoxFit.contain,
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Text(
+                'Sign in With Google',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

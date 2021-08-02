@@ -198,6 +198,7 @@ class _AppDrawerState extends State<AppDrawer> with TickerProviderStateMixin {
                   ),
                   onTap: () async {
                     await FirebaseAuth.instance.signOut();
+                    // Provider.of<DataProvider>(context).close();
                     // Navigator.of(context).pushReplacement(
                     //   MaterialPageRoute(
                     //     builder: (ctx) => AuthScreen(),

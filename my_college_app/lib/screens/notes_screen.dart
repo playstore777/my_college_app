@@ -103,6 +103,11 @@ class _NotesScreenState extends State<NotesScreen> {
                           child: Material(
                             type: MaterialType.transparency,
                             child: InkWell(
+                              // borderRadius: BorderRadius.only(
+                              //   topRight: Radius.circular(30),
+                              //   bottomRight: Radius.circular(30),
+                              // ),
+                              borderRadius: BorderRadius.circular(30),
                               child: Padding(
                                 padding: EdgeInsets.all(size * 0.014),
                                 child: _isFolded
@@ -147,10 +152,13 @@ class _NotesScreenState extends State<NotesScreen> {
                                 color: Colors.white,
                               ),
                             ),
-                            key: UniqueKey(),
-                            // key: ValueKey<int>(_notes[index].id),
+                            // key: UniqueKey(),
+                            key: Key(_notes[index].id.toString()),
                             onDismissed: (DismissDirection direction) {
+                              // setState(() {
                               NotesDatabase.instance.delete(_notes[index].id);
+                              // });
+                              showSnackbar('The note is deleted successfully');
                             },
                             child: displayNote(
                               note: _isFolded
@@ -198,6 +206,20 @@ class _NotesScreenState extends State<NotesScreen> {
             trailing: Text(note.dateTime.toString().substring(0, 16)),
           ),
         ),
+      ),
+    );
+  }
+
+  void showSnackbar(String title) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '$title',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        elevation: 6,
       ),
     );
   }

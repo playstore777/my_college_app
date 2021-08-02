@@ -14,7 +14,7 @@ import 'providers/data_provider.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:device_preview/device_preview.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:showcaseview/showcaseview.dart';
@@ -23,10 +23,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    // DevicePreview(
-    //   builder: (ctx) =>
-    MyApp(),
-    // ),
+    DevicePreview(
+      builder: (ctx) => MyApp(),
+    ),
   );
 }
 
@@ -42,8 +41,8 @@ class _MyAppState extends State<MyApp> {
     return ChangeNotifierProvider(
       create: (ctx) => DataProvider(),
       child: MaterialApp(
-        // locale: DevicePreview.locale(context), // Add the locale here
-        // builder: DevicePreview.appBuilder, // Add the builder here
+        locale: DevicePreview.locale(context), // Add the locale here
+        builder: DevicePreview.appBuilder, // Add the builder here
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(

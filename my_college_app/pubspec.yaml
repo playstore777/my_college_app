@@ -43,6 +43,7 @@ dependencies:
   path: ^1.8.0
   showcaseview: ^1.1.0
   slimy_card: ^1.0.4
+  vertical_card_pager: ^1.5.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,7 @@ flutter:
     - assets/gifs/night_bg.gif
     - assets/gifs/splash_screen.gif
     - assets/gifs/lightMode.gif
+    - assets/images/google_auth/google-logo.png
 
   #   - images/a_dot_ham.jpeg
 

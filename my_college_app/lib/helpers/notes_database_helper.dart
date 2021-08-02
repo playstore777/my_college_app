@@ -1,9 +1,16 @@
-import '/models/notes_entry.dart';
+// flutter packages
+// import 'package:firebase_auth/firebase_auth.dart';
 
+// dependencies
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+// App packages
+import '/models/notes_entry.dart';
+
 class NotesDatabase {
+  // final _user = FirebaseAuth.instance.currentUser;
+
   NotesDatabase._init();
   // calling the constructor
   static final NotesDatabase instance = NotesDatabase._init();
@@ -12,7 +19,10 @@ class NotesDatabase {
 
   // Opening a database
   Future<Database> get database async {
+    // print('user from NotesDatabase : $_user');
+    // var rightDb = _database.path;
     if (_database != null) return _database;
+    // print(_database);
     _database = await _initDB('notes.db');
     return _database;
   }

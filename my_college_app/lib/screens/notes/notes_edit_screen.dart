@@ -100,7 +100,7 @@ class _NotesEditScreenState extends State<NotesEditScreen> {
   Padding title(Size size, Note note) {
     if (note != null) {
       _titleController.text = note.title;
-      print('note.title: ${note.title}');
+      // print('note.title: ${note.title}');
     }
     return Padding(
       padding: EdgeInsets.all(15),
