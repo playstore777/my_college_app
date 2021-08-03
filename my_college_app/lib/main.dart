@@ -23,9 +23,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
-    DevicePreview(
-      builder: (ctx) => MyApp(),
-    ),
+    // DevicePreview(
+    //   builder: (ctx) =>
+    MyApp(),
+    // ),
   );
 }
 
@@ -41,8 +42,8 @@ class _MyAppState extends State<MyApp> {
     return ChangeNotifierProvider(
       create: (ctx) => DataProvider(),
       child: MaterialApp(
-        locale: DevicePreview.locale(context), // Add the locale here
-        builder: DevicePreview.appBuilder, // Add the builder here
+        // locale: DevicePreview.locale(context), // Add the locale here
+        // builder: DevicePreview.appBuilder, // Add the builder here
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
