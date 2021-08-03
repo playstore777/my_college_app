@@ -27,7 +27,7 @@ Course Screen light
 
 Course Screen Dark
 
-![notes screen](screenshots/notes_screen_light.jpg)
+![notes screen](screenshots/notes_screen_light.png)
 
 Notes Screen light
 
