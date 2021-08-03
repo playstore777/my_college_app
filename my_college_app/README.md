@@ -31,11 +31,27 @@ Course Screen Dark
 
 Notes Screen light
 
-![notes screen](screenshots/notes_screen_dark.jpg)
+![notes screen](screenshots/notes_screen_dark.png)
 
 Notes Screen Dark
 
-![payment screen](screenshots/payment_screen_light.jpg)
+![notes screen snackbar](screenshots/notes_snackbar_light.png)
+
+Note deleted Snackbar light
+
+![notes screen dark snackbar](screenshots/notes_snackbar_dark.png)
+
+Note deleted Snackbar Dark
+
+![note screen](screenshots/note_screen_light.png)
+
+Note Screen light
+
+![note screen](screenshots/note_screen_dark.png)
+
+Note Screen Dark
+
+![payment screen](screenshots/payment_screen_light.png)
 
 Payment Screen light
 
